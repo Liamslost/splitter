@@ -1,11 +1,11 @@
 function ResultBox ({boxTitle }){
     return (
-        <div className="border-2 my-10 flex justify-between">
-        <div className="border-2">
+        <div className="my-10 px-4 flex justify-between">
+        <div className="">
             <div className="text-white">{boxTitle}</div>
-            <div>/ person</div>
+            <div className="text-teal-700">/ person</div>
         </div>
-        <div className="border-2 text-6xl text-teal-600">
+        <div className="text-6xl text-teal-600">
             0.00
         </div>
         </div>
