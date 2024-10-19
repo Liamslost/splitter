@@ -1,4 +1,4 @@
-function ResultBox ({boxTitle }){
+function ResultBox ({boxTitle, totalAmmount }){
     return (
         <div className="my-10 px-4 flex justify-between">
         <div className="">
@@ -6,7 +6,7 @@ function ResultBox ({boxTitle }){
             <div className="text-teal-700">/ person</div>
         </div>
         <div className="text-6xl text-teal-600">
-            0.00
+            {totalAmmount}
         </div>
         </div>
     )

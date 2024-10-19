@@ -1,5 +1,3 @@
-import { useState } from "react"
-
 function InputBill({handleBillChange}) {
 
     return(
