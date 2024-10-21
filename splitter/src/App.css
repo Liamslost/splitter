@@ -2,7 +2,7 @@ body {
     background: #d1fae5;
 }
 
-.selected{
+.selected:selected {
     scale: 110%;
     color: chartreuse;
     border-color: blueviolet;
