@@ -48,6 +48,15 @@ function Calculator({handleClickCustom}) {
     }, 100);
   }
 
+  function handleChangeCustom (event){
+    let value = event.target.value 
+    if (value == ""){
+      setTipAmount(0)
+      return
+    }
+    setTipAmount(value);
+  }
+
 
 
   function handleBillChange(event) {
@@ -97,7 +106,7 @@ function Calculator({handleClickCustom}) {
   }, [billValue, tipAmount, peopleValue]);
 
   return (
-    <div className="bg-white rounded-3xl p-5 mx-4 mb-8 lg:flex lg:w-7/12 lg:mx-auto lg:gap-4">
+    <div className="bg-white rounded-3xl p-5 mx-4 mb-8 shadow-xl lg:flex lg:w-7/12 lg:mx-auto lg:gap-4 xl:mt-40">
       <div id="input" className="bg-white rounded-3xl pt-4 pb-9 lg:w-1/2">
         <div>
           <label
@@ -107,7 +116,7 @@ function Calculator({handleClickCustom}) {
           >
             Bill
           </label>
-          <div className="relative mt-2 rounded-md shadow-lg">
+          <div className="relative mt-2 rounded-md ">
             <div className="absolute inset-y-0 left-0 flex items-center pl-3">
               <span className="text-gray-500 sm:text-sm">$</span>
             </div>
@@ -146,8 +155,7 @@ function Calculator({handleClickCustom}) {
               tipDisplay="25"
               clickHandler={handleClick25Percent}
             />
-            <TipAmountButton tipDisplay="Custom"
-            clickHandler={handleClickCustom} />
+            <input placeholder="Custom" onChange={handleChangeCustom} className="bg-teal-50 border rounded-lg text-center"></input>
           </div>
           <span className="text-xs float-right bottom-0">
             the tip applied is {tipAmount}%

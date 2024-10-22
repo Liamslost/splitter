@@ -7,3 +7,33 @@ body {
     color: chartreuse;
     border-color: blueviolet;
 }
+
+.split {
+    animation: split 1s ease;
+    animation-fill-mode: forwards;
+    animation-delay: 0.5s;    
+}
+
+@keyframes split {
+    0% {
+        transform: translateY(0px);
+    }
+    100%{
+        transform: translateY(52px);
+    }
+}
+
+.grow {
+    animation: grow 2.5s;
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
+}
+
+@keyframes grow {
+    0% {
+        width: 0%;
+    }
+    100%{
+        width: 100%
+    }
+}
