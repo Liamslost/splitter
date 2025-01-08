@@ -31,8 +31,9 @@ jobs:
 
       - name: List contents of dist folder
         run: ls -al dist
+
       - name: Deploy to GitHub Pages
         run: |
-          npm run deploy -- --remote https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+          npm run deploy -- --repo https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
