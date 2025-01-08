@@ -31,13 +31,8 @@ jobs:
 
       - name: List contents of dist folder
         run: ls -al dist
-
-      - name: Set up Git remote URL with token
-        run: |
-          git remote set-url origin https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
-
       - name: Deploy to GitHub Pages
-        run: npm run deploy
+        run: |
+          npm run deploy -- --remote https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
