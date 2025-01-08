@@ -1,5 +1,5 @@
 body {
-  background: rgb(103 232 249);
+  background: rgb(58 71 100);
 }
 
 .split {
@@ -12,7 +12,6 @@ body {
   animation: split 1s ease;
   animation-fill-mode: backwards;
   animation-delay: 0.5s;  
-
 }
 
 @keyframes split {

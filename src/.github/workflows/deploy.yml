@@ -1,49 +1,30 @@
-name: Deploy
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
-      - main
+      - main  # Trigger the workflow on push to the `main` branch
 
 jobs:
-  build:
-    name: Build
-    runs-on: ubuntu-latest
+  deploy:
+    runs-on: ubuntu-latest  # Use an Ubuntu runner
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
+      - name: Checkout the repository
+        uses: actions/checkout@v2  # Checkout the code from your repo
 
-      - name: Setup Node
-        uses: actions/setup-node@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v2  # Set up Node.js for the workflow
+        with:
+          node-version: '16'  # Use the version of Node.js your project requires
 
       - name: Install dependencies
-        uses: bahmutov/npm-install@v1
+        run: npm install  # Install dependencies
 
-      - name: Build project
-        run: npm run build
-
-      - name: Upload production-ready build files
-        uses: actions/upload-artifact@v3
-        with:
-          name: production-files
-          path: ./dist
-
-  deploy:
-    name: Deploy
-    needs: build
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-
-    steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: production-files
-          path: ./dist
+      - name: Build the app
+        run: npm run build  # Build the production-ready app
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+        run: npm run deploy  # Run the deploy command (you should have `gh-pages` setup)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # GitHub token for authentication
