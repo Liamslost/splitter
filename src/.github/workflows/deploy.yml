@@ -3,28 +3,29 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Trigger the workflow on push to the `main` branch
+      - main
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest  # Use an Ubuntu runner
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v2  # Checkout the code from your repo
-
+        uses: actions/checkout@v2
       - name: Set up Node.js
-        uses: actions/setup-node@v2  # Set up Node.js for the workflow
+        uses: actions/setup-node@v2
         with:
-          node-version: '16'  # Use the version of Node.js your project requires
+          node-version: '16'
 
       - name: Install dependencies
-        run: npm install  # Install dependencies
-
+        run: npm install
       - name: Build the app
-        run: npm run build  # Build the production-ready app
+        run: npm run build
+
+      - name: List contents of dist folder
+        run: ls -al dist
 
       - name: Deploy to GitHub Pages
-        run: npm run deploy  # Run the deploy command (you should have `gh-pages` setup)
+        run: npm run deploy
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # GitHub token for authentication
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
