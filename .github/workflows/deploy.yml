@@ -24,6 +24,11 @@ jobs:
       - name: Build the app
         run: npm run build
 
+      - name: Configure Git for Deployment
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+
       - name: List contents of dist folder
         run: ls -al dist
 
